@@ -1,4 +1,5 @@
-const Artist = require('../models/artist');
+
+const {Artist} = require('../models/artist');
 
 /**
  * Searches through the Artist collection
@@ -8,5 +9,20 @@ const Artist = require('../models/artist');
  * @param {integer} limit How many records to return in the result set
  * @return {promise} A promise that resolves with the artists, count, offset, and limit
  */
-module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
+module.exports = (criteria, sortProperty, offset = 0, limit = 10) => {
+
+	const query=Artist.find({})
+	.sort({[sortProperty]:1})
+	.skip(offset)
+	.limit(limit);
+
+	return Promise.all([query,Artist.count()])
+	.then((results)=>{
+		return {
+			all:results[0],
+			count:results[1],
+			offset:offset,
+			limit:limit
+		}
+	})	
 };
