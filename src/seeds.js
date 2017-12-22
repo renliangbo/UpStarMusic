@@ -2,10 +2,12 @@ import _ from 'lodash';
 import faker from 'faker';
 import { Db, Server } from 'mongodb';
 import { GENRES } from './constants';
-
 const MINIMUM_ARTISTS = 2;
 const ARTISTS_TO_ADD = 15;
-
+console.log(faker.name.findName())
+console.log(faker.internet.email())
+console.log(faker.image.avatar());
+console.log(faker.internet.url())
 let artistsCollection;
 const db = new Db('upstar_music', new Server('localhost', 27017));
 db.open()
@@ -21,7 +23,6 @@ db.open()
     }
   })
   .catch(e => console.log(e));
-
 
 function createArtist() {
   return {
@@ -69,5 +70,5 @@ function randomEntry(array) {
 }
 
 function randomBetween(min, max) {
-  return ~~(Math.random() * (max-min)) + min;
+  return ~~(Math.random() * (max - min)) + min;
 }
