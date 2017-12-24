@@ -2,8 +2,8 @@ import _ from 'lodash';
 import faker from 'faker';
 import { Db, Server } from 'mongodb';
 import { GENRES } from './constants';
-const MINIMUM_ARTISTS = 2;
-const ARTISTS_TO_ADD = 15;
+const MINIMUM_ARTISTS = 200;
+const ARTISTS_TO_ADD = 15000;
 console.log(faker.name.findName())
 console.log(faker.internet.email())
 console.log(faker.image.avatar());
